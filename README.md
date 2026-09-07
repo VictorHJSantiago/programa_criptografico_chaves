@@ -1,801 +1,1028 @@
 <div align="center">
 
-<img src="https://cdn-icons-png.flaticon.com/512/2092/2092663.png" alt="Hybrid Cipher Logo" width="100" />
+**🌐 Choose Language / Selecione o Idioma / Elija el Idioma**
 
-# 🔒 Hybrid Cipher Program — RSA + AES
-
-**A Java Swing desktop application demonstrating hybrid encryption,**
-**combining asymmetric (RSA) and symmetric (AES) cryptography to protect messages.**
-
-![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Swing](https://img.shields.io/badge/Java%20Swing-GUI-007396?style=for-the-badge&logo=java&logoColor=white)
-![RSA](https://img.shields.io/badge/RSA-Asymmetric-8B0000?style=for-the-badge)
-![AES](https://img.shields.io/badge/AES-Symmetric-1B5E20?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
-
-### 🌐 Choose Language / Selecione o idioma / Elija el idioma
-
-[![English](https://img.shields.io/badge/ENGLISH-CURRENT-blue?style=for-the-badge)](README.md)
-[![Português](https://img.shields.io/badge/PORTUGUÊS-README__PT.MD-009739?style=for-the-badge)](README_PT.md)
-[![Español](https://img.shields.io/badge/ESPAÑOL-README__ES.MD-FFD100?style=for-the-badge)](README_ES.md)
+[![🇺🇸 English](https://img.shields.io/badge/🇺🇸%20English-Current-005CA5?style=for-the-badge)](README.md)&nbsp;&nbsp;&nbsp;[![🇧🇷 Português](https://img.shields.io/badge/🇧🇷%20Português-README__PT.md-009C3B?style=for-the-badge)](README_PT.md)&nbsp;&nbsp;&nbsp;[![🇪🇸 Español](https://img.shields.io/badge/🇪🇸%20Español-README__ES.md-C60B1E?style=for-the-badge)](README_ES.md)
 
 </div>
 
 ---
 
-## 📖 About the Project
+<div align="center">
 
-The **Hybrid Cipher Program** is a desktop application built in **Java Swing** that demonstrates, in practice, the same cryptographic strategy used by protocols such as **TLS/HTTPS**: encrypting the message with a fast symmetric algorithm (**AES**) and protecting the symmetric key with a slower but more secure asymmetric algorithm (**RSA**).
-
-This repository also documents the project following a full Software Engineering lifecycle — requirements, use cases, UML diagrams, data modeling, architecture, personas and wireframes — for academic and portfolio purposes.
+```
+ ██████╗██╗███████╗██████╗  █████╗ 
+██╔════╝██║██╔════╝██╔══██╗██╔══██╗
+██║     ██║█████╗  ██████╔╝███████║
+██║     ██║██╔══╝  ██╔══██╗██╔══██║
+╚██████╗██║██║     ██║  ██║██║  ██║
+ ╚═════╝╚═╝╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝
+   Hybrid RSA-2048 + AES-128-GCM Encryption Desktop Application
+```
 
 ---
 
-## 📚 Table of Contents
+[![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
+[![Swing](https://img.shields.io/badge/UI-Java%20Swing-437291?style=for-the-badge&logo=java&logoColor=white)](https://docs.oracle.com/javase/tutorial/uiswing/)
+[![NetBeans](https://img.shields.io/badge/IDE-NetBeans%20Ant-1B6AC6?style=for-the-badge&logo=apache-netbeans-ide&logoColor=white)](https://netbeans.apache.org/)
+[![RSA](https://img.shields.io/badge/Asymmetric-RSA--2048-8B5CF6?style=for-the-badge&logo=letsencrypt&logoColor=white)]()
+[![AES](https://img.shields.io/badge/Symmetric-AES--128--GCM-10B981?style=for-the-badge&logo=letsencrypt&logoColor=white)]()
+[![License](https://img.shields.io/badge/License-Educational-FF6B35?style=for-the-badge)]()
+[![Status](https://img.shields.io/badge/Status-Stable-10B981?style=for-the-badge&logo=checkmarx&logoColor=white)]()
 
-- [1. Requirements](#1-requirements-)
-- [2. Use Cases](#2-use-cases-)
-- [3. Requirements Traceability Matrix](#3-requirements-traceability-matrix-)
-- [4. Software Requirements Specification (SRS)](#4-software-requirements-specification-srs-)
-- [5. UML & Structural Diagrams](#5-uml--structural-diagrams-)
-- [6. Data Model & Data Dictionary](#6-data-model--data-dictionary-)
-- [7. Data Flow Diagram (DFD) & Data Lineage](#7-data-flow-diagram-dfd--data-lineage-)
-- [8. Architecture Diagram & Flowchart](#8-architecture-diagram--flowchart-)
-- [9. Persona & User Journey Map](#9-persona--user-journey-map-)
-- [10. Wireframes & Mockups](#10-wireframes--mockups-)
+<br/>
+
+> **A native Java Swing desktop application demonstrating hybrid cryptography**
+> combining RSA-2048 asymmetric key exchange with AES-128-GCM authenticated symmetric encryption.
+
+<br/>
+
+![Classes](https://img.shields.io/badge/Java%20Classes-2-ED8B00?style=flat-square)
+![Key Size](https://img.shields.io/badge/RSA%20Key-2048%20bit-8B5CF6?style=flat-square)
+![Cipher](https://img.shields.io/badge/AES%20Key-128%20bit-10B981?style=flat-square)
+![Encoding](https://img.shields.io/badge/Wire%20Format-Hexadecimal-FCC624?style=flat-square)
+![Persistence](https://img.shields.io/badge/Persistence-None%20(in--memory)-B71C1C?style=flat-square)
+
+</div>
+
+---
+
+## 📑 Table of Contents
+
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
+
+<table>
+<tr>
+<td valign="top" width="50%">
+
+**🏗️ System**
+- [Overview](#-overview)
+- [System Architecture](#-system-architecture)
+- [Technology Stack](#-technology-stack)
+- [Design Patterns](#-design-patterns-applied)
+- [Project Structure](#-project-structure)
+
+**📦 Modules**
+- [CifraHibrida — Crypto Engine](#-cifrahibrida--hybrid-crypto-engine)
+- [DadosCifrados — Ciphertext Container](#-dadoscifrados--ciphertext-container)
+- [CifraHibridaGUI — Swing Interface](#-cifrahibridagui--swing-interface)
+- [Hex Codec Helpers](#-hex-codec-helpers)
+
+</td>
+<td valign="top" width="50%">
+
+**💼 Business**
+- [Business Rules](#-business-rules)
+- [Functional Requirements](#-functional-requirements)
+- [Non-Functional Requirements](#-non-functional-requirements)
+
+**📐 Design**
+- [Data Model](#-data-model)
+- [System Flows](#-system-flows)
+- [Encrypt Flow](#encrypt-flow)
+- [Decrypt Flow](#decrypt-flow)
+- [GUI Event Flow](#gui-event-flow)
+
+**🔐 Security & Ops**
+- [Security](#-security)
 - [Installation & Execution](#-installation--execution)
-- [Author](#-author)
+- [Automated Tests](#-automated-tests)
+- [Metrics & Monitoring](#-metrics--monitoring)
+- [Known Limitations](#-known-limitations)
+
+</td>
+</tr>
+</table>
 
 ---
 
-## 1. Requirements 📋
+</details>
+
+## 🌟 Overview
 
 <details>
-<summary><strong>Click to expand — Functional, Non-Functional, Business, Domain, Data & Interface Requirements</strong></summary>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
 
-### 1.1 Functional Requirements (FR)
+**CifraHibrida** (`teste_cripto`) is a small, self-contained Java Swing desktop application that demonstrates the **hybrid encryption** pattern used by real-world protocols such as TLS and PGP: a fast **symmetric cipher** (AES-128 in GCM mode) protects the actual message, while a **slow but key-exchange-friendly asymmetric cipher** (RSA-2048) protects the one-time symmetric key. Every identifier in the source, from class names to variable names, is written in Portuguese, reflecting the project's origin as an educational cryptography exercise.
 
-| ID | Requirement |
-|:---|:---|
-| FR01 | The system **must generate** an RSA key pair (public/private) on demand. |
-| FR02 | The system **must display** the generated public and private keys on screen. |
-| FR03 | The system **must allow** the user to type a plaintext message. |
-| FR04 | The system **must encrypt** the message using a hybrid scheme: AES for the message, RSA for the AES key. |
-| FR05 | The system **must display** the AES‑encrypted message and the RSA‑encrypted session key. |
-| FR06 | The system **must decrypt** an encrypted payload using the RSA private key, recovering the AES key and then the original message. |
-| FR07 | The system **must allow** clearing all text fields with a single action. |
-| FR08 | The system **must allow** the user to close the application. |
-| FR09 | The system **must inform** the user when an operation cannot be completed (e.g., decrypting without a valid key). |
+The application has exactly two classes. `CifraHibrida.java` is the cryptographic engine: it generates an RSA-2048 key pair on construction, exposes a `cifrar()` (encrypt) method that produces an AES-encrypted ciphertext plus an RSA-wrapped AES session key, and a `decifrar()` (decrypt) method that reverses the process. `CifraHibridaGUI.java` is a `JFrame`-based Swing interface with two tabs, "Cifrar" (Encrypt) and "Decifrar" (Decrypt), that lets a user type plaintext, encrypt it, and see the three resulting byte arrays (session key, IV, ciphertext) rendered as hexadecimal text, or paste hexadecimal values back in to decrypt them.
 
-### 1.2 Non-Functional Requirements (NFR)
+There is **no database, no network socket, and no file persistence** anywhere in the code. The RSA key pair lives only in the `CifraHibrida` object's memory for the lifetime of the running JVM process; closing the application discards it irrecoverably. This is a deliberate, if unstated, design choice inherent to the small teaching scope of the project, and it is documented honestly throughout this README, particularly in [Security](#-security) and [Known Limitations](#-known-limitations).
 
-| ID | Requirement |
-|:---|:---|
-| NFR01 | RSA keys **must be at least 2048 bits**. |
-| NFR02 | AES session keys **must use 256-bit keys**. |
-| NFR03 | The application **must run** on any OS with Java 8+ installed (portability). |
-| NFR04 | The GUI **must respond** to user actions in under 1 second for typical message sizes. |
-| NFR05 | The application **must not persist** keys or messages to disk (confidentiality by design). |
-| NFR06 | The interface **must be simple enough** for a user with no cryptography background to operate it. |
-| NFR07 | The codebase **must rely only** on the standard Java Cryptography Architecture (JCA), no external crypto libraries. |
+### 🎯 System Objectives
 
-### 1.3 Business Rules (BR)
-
-| ID | Rule |
-|:---|:---|
-| BR01 | A message **cannot be encrypted** before an RSA key pair has been generated. |
-| BR02 | Every encryption operation **must generate a brand-new random AES session key** — keys are never reused. |
-| BR03 | Decryption **requires both** the encrypted payload (AES ciphertext + encrypted AES key) **and** the matching RSA private key. |
-| BR04 | The "Clear" action **resets the UI state** without leaving residual data in memory-visible fields. |
-| BR05 | The public key may be freely shared; the private key **must never** leave the local application. |
-
-### 1.4 Domain Requirements
-
-| ID | Requirement |
-|:---|:---|
-| DR01 | The system operates within the **Cryptography** domain and must correctly implement the **Hybrid Encryption** pattern (asymmetric key‑wrapping + symmetric payload encryption). |
-| DR02 | RSA operations must follow standard **JCA** key generation and cipher transformations (`RSA/ECB/PKCS1Padding` or equivalent). |
-| DR03 | AES operations must use a valid **block cipher mode** (e.g., `AES/ECB/PKCS5Padding` or `AES/CBC/PKCS5Padding`) consistent between encryption and decryption. |
-
-### 1.5 Data Requirements
-
-| ID | Requirement |
-|:---|:---|
-| DAR01 | Keys are represented internally as `PublicKey` / `PrivateKey` (`java.security`) and displayed as **Base64-encoded strings**. |
-| DAR02 | Messages are handled as **UTF-8 encoded strings**. |
-| DAR03 | Encrypted output (ciphertext + encrypted session key) is represented as **byte arrays** and displayed as Base64. |
-| DAR04 | No data is written to permanent storage in the current version — all data is **in-memory / session-scoped**. |
-
-### 1.6 Interface Requirements
-
-| ID | Requirement |
-|:---|:---|
-| IR01 | A single-window **Swing GUI** with input/output `JTextArea` components and action `JButton`s. |
-| IR02 | Buttons: **Generate Keys**, **Encrypt**, **Decrypt**, **Clear**, **Exit**. |
-| IR03 | Output fields are **read-only** and selectable for copy/paste. |
-| IR04 | The layout must remain usable when resized (responsive Swing layout managers). |
-
-</details>
+| Objective | Description |
+|-----------|-------------|
+| 🔑 **Key Pair Generation** | Generate a fresh RSA-2048 key pair every time the application starts, via `KeyPairGenerator` |
+| 🔒 **Symmetric Encryption** | Encrypt arbitrary UTF-8 plaintext with a freshly generated 128-bit AES key in GCM mode |
+| 🎁 **Key Wrapping** | Encrypt (wrap) the one-time AES key with the RSA public key using OAEP padding |
+| 🔓 **Decryption Round-Trip** | Unwrap the AES key with the RSA private key, then decrypt and authenticate the ciphertext |
+| 🔡 **Human-Readable Transport** | Encode every cryptographic byte array (key, IV, ciphertext) as uppercase hexadecimal text |
+| 🖼️ **Interactive Demonstration** | Provide a two-tab Swing GUI so a user can encrypt and decrypt without writing code |
+| 🎨 **Native Look and Feel** | Use the Nimbus `LookAndFeel` for a modern desktop appearance |
+| 📦 **Zero External Dependencies** | Rely exclusively on the JDK's built-in `java.security` and `javax.crypto` APIs |
 
 ---
 
-## 2. Use Cases 🧩
-
-<details>
-<summary><strong>Click to expand — Use Case Specifications</strong></summary>
-
-### Use Case Diagram
-
-```mermaid
-flowchart LR
-    User((🧑 User))
-
-    UC1([UC01 - Generate Key Pair])
-    UC2([UC02 - Encrypt Message])
-    UC3([UC03 - Decrypt Message])
-    UC4([UC04 - Clear Fields])
-    UC5([UC05 - Exit Application])
-
-    User --- UC1
-    User --- UC2
-    User --- UC3
-    User --- UC4
-    User --- UC5
-
-    UC2 -. includes .-> UC1
-    UC3 -. includes .-> UC1
-```
-
-### UC01 — Generate Key Pair
-| Field | Description |
-|:---|:---|
-| **Actor** | User |
-| **Precondition** | Application is open. |
-| **Main Flow** | 1. User clicks **"Generate Keys"**. 2. System generates an RSA-2048 key pair. 3. System displays public and private keys in Base64. |
-| **Postcondition** | A valid key pair is available for encryption/decryption. |
-
-### UC02 — Encrypt Message
-| Field | Description |
-|:---|:---|
-| **Actor** | User |
-| **Precondition** | A key pair has been generated (BR01). |
-| **Main Flow** | 1. User types a message. 2. User clicks **"Encrypt"**. 3. System generates a random AES-256 key. 4. System encrypts the message with AES. 5. System encrypts the AES key with the RSA public key. 6. System displays both encrypted outputs. |
-| **Alternative Flow** | If no key pair exists, system shows an error (FR09). |
-| **Postcondition** | Encrypted message and encrypted session key are displayed. |
-
-### UC03 — Decrypt Message
-| Field | Description |
-|:---|:---|
-| **Actor** | User |
-| **Precondition** | An encrypted payload and the RSA private key are available (BR03). |
-| **Main Flow** | 1. User clicks **"Decrypt"**. 2. System decrypts the AES key using the RSA private key. 3. System decrypts the message using the recovered AES key. 4. System displays the original plaintext. |
-| **Alternative Flow** | If decryption fails (wrong key/data), system shows an error (FR09). |
-| **Postcondition** | Original message is displayed. |
-
-### UC04 — Clear Fields
-| Field | Description |
-|:---|:---|
-| **Actor** | User |
-| **Main Flow** | 1. User clicks **"Clear"**. 2. System resets all text areas to empty. |
-| **Postcondition** | UI returns to its initial state (BR04). |
-
-### UC05 — Exit Application
-| Field | Description |
-|:---|:---|
-| **Actor** | User |
-| **Main Flow** | 1. User clicks **"Exit"**. 2. System closes the application window. |
-
 </details>
 
----
-
-## 3. Requirements Traceability Matrix 🔗
+## 🏗️ System Architecture
 
 <details>
-<summary><strong>Click to expand — Traceability Matrix</strong></summary>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
 
-| Requirement | Use Case | Diagram(s) | Verification |
-|:---|:---|:---|:---|
-| FR01, FR02 | UC01 | Sequence, State Machine, Class | Manual test: click "Generate Keys", verify keys displayed |
-| FR03, FR04, FR05 | UC02 | Sequence, Activity, Class, Use Case | Manual test: encrypt sample message, verify ciphertext + encrypted key shown |
-| FR06 | UC03 | Sequence, Activity, State Machine | Manual test: decrypt previous output, verify original message recovered |
-| FR07 | UC04 | State Machine | Manual test: click "Clear", verify all fields empty |
-| FR08 | UC05 | Use Case, Deployment | Manual test: click "Exit", verify app closes |
-| FR09 | UC02, UC03 | Activity | Manual test: decrypt with invalid data, verify error message |
-| NFR01, NFR02 | UC01, UC02 | Class, Data Dictionary | Code review of key sizes (RSA 2048 / AES 256) |
-| NFR05 | UC02, UC03 | DFD, Data Lineage | Confirm no file/DB writes occur |
-| BR01–BR05 | UC01–UC04 | State Machine, Activity | Manual test of business rule enforcement |
-
-</details>
-
----
-
-## 4. Software Requirements Specification (SRS) 📄
-
-<details>
-<summary><strong>Click to expand — SRS Summary (IEEE 830-style)</strong></summary>
-
-### 4.1 Introduction
-- **Purpose:** Specify the requirements for the Hybrid Cipher Program, a desktop tool for educational demonstration of RSA + AES hybrid encryption.
-- **Scope:** Single-user, offline, Java Swing desktop application. No network or persistence layer in the current version.
-- **Definitions:** *RSA* — Rivest-Shamir-Adleman asymmetric algorithm. *AES* — Advanced Encryption Standard symmetric algorithm. *JCA* — Java Cryptography Architecture. *Session Key* — randomly generated AES key used once per message.
-
-### 4.2 Overall Description
-- **Product Perspective:** Standalone JAR application, built with Apache NetBeans/Ant.
-- **Product Functions:** Key generation, hybrid encryption, hybrid decryption, field clearing, application exit (see Section 1.1).
-- **User Characteristics:** Students/developers studying applied cryptography; no prior security expertise required.
-- **Constraints:** Must use only `java.security` / `javax.crypto` (JCA/JCE) APIs; must run on Java 8+.
-- **Assumptions:** The user trusts their local machine; private keys are not protected by a passphrase in this version.
-
-### 4.3 Specific Requirements
-- See [Section 1 — Requirements](#1-requirements-) for the complete FR / NFR / BR / Domain / Data / Interface breakdown.
-- See [Section 2 — Use Cases](#2-use-cases-) for behavioral specifications.
-
-### 4.4 Appendices
-- See [Section 5 — UML & Structural Diagrams](#5-uml--structural-diagrams-) and [Section 6 — Data Model & Data Dictionary](#6-data-model--data-dictionary-).
-
-</details>
-
----
-
-## 5. UML & Structural Diagrams 🏗️
-
-<details>
-<summary><strong>5.1 Use Case Diagram</strong></summary>
-
-```mermaid
-flowchart LR
-    User((🧑 User))
-    UC1([Generate Key Pair])
-    UC2([Encrypt Message])
-    UC3([Decrypt Message])
-    UC4([Clear Fields])
-    UC5([Exit Application])
-
-    User --- UC1
-    User --- UC2
-    User --- UC3
-    User --- UC4
-    User --- UC5
-    UC2 -. includes .-> UC1
-    UC3 -. includes .-> UC1
-```
-</details>
-
-<details>
-<summary><strong>5.2 Class Diagram</strong></summary>
-
-```mermaid
-classDiagram
-    class CifraHibridaGUI {
-        -CifraHibrida logic
-        +onGenerateKeysClick()
-        +onEncryptClick()
-        +onDecryptClick()
-        +onClearClick()
-    }
-    class CifraHibrida {
-        -KeyPair rsaKeyPair
-        +generateKeyPair() KeyPair
-        +hybridEncrypt(String message, PublicKey pub) EncryptedPayload
-        +hybridDecrypt(EncryptedPayload payload, PrivateKey priv) String
-    }
-    class EncryptedPayload {
-        -byte[] encryptedMessageAES
-        -byte[] encryptedSessionKeyRSA
-        -byte[] iv
-    }
-    class KeyPair {
-        -PublicKey publicKey
-        -PrivateKey privateKey
-    }
-    CifraHibridaGUI --> CifraHibrida : uses
-    CifraHibrida --> KeyPair : generates
-    CifraHibrida --> EncryptedPayload : produces
-```
-</details>
-
-<details>
-<summary><strong>5.3 Object Diagram</strong></summary>
-
-```mermaid
-classDiagram
-    class keyPair_session1 {
-        algorithm = "RSA-2048"
-        publicKey = "MIIBIjANBgkq..."
-        privateKey = "***hidden***"
-    }
-    class payload_msg1 {
-        encryptedMessageAES = "8f3a91c2..."
-        encryptedSessionKeyRSA = "b21fe0aa..."
-        iv = "00112233..."
-    }
-    keyPair_session1 ..> payload_msg1 : was used to create
-```
-*Instance snapshot of a single encryption operation at runtime.*
-</details>
-
-<details>
-<summary><strong>5.4 Sequence Diagram</strong></summary>
-
-```mermaid
-sequenceDiagram
-    actor U as User
-    participant GUI as CifraHibridaGUI
-    participant LOG as CifraHibrida
-    participant RSA as JCA RSA Cipher
-    participant AES as JCA AES Cipher
-
-    U->>GUI: click "Encrypt"
-    GUI->>LOG: hybridEncrypt(message, publicKey)
-    LOG->>AES: generate random AES session key
-    LOG->>AES: encrypt(message, sessionKey)
-    AES-->>LOG: encryptedMessageAES
-    LOG->>RSA: encrypt(sessionKey, publicKey)
-    RSA-->>LOG: encryptedSessionKeyRSA
-    LOG-->>GUI: EncryptedPayload(encryptedMessageAES, encryptedSessionKeyRSA)
-    GUI-->>U: display encrypted result
-```
-</details>
-
-<details>
-<summary><strong>5.5 Communication (Collaboration) Diagram</strong></summary>
-
-```mermaid
-flowchart TD
-    U[User]
-    GUI[CifraHibridaGUI]
-    LOG[CifraHibrida]
-    AES[AES Cipher]
-    RSA[RSA Cipher]
-
-    U -- "1: click Encrypt" --> GUI
-    GUI -- "2: hybridEncrypt(msg, pubKey)" --> LOG
-    LOG -- "3: encrypt(msg, sessionKey)" --> AES
-    LOG -- "4: encrypt(sessionKey, pubKey)" --> RSA
-    AES -- "5: return ciphertext" --> LOG
-    RSA -- "6: return encrypted key" --> LOG
-    LOG -- "7: return payload" --> GUI
-```
-</details>
-
-<details>
-<summary><strong>5.6 Activity Diagram</strong></summary>
-
-```mermaid
-flowchart TD
-    Start([Start]) --> A{Key pair generated?}
-    A -- No --> Err1[Show error: generate keys first]
-    A -- Yes --> B[Generate random AES session key]
-    B --> C[Encrypt message with AES]
-    C --> D[Encrypt AES key with RSA public key]
-    D --> E[Display ciphertext + encrypted key]
-    E --> End([End])
-    Err1 --> End
-```
-</details>
-
-<details>
-<summary><strong>5.7 State Machine Diagram</strong></summary>
-
-```mermaid
-stateDiagram-v2
-    [*] --> NoKeys
-    NoKeys --> KeysGenerated : generateKeys()
-    KeysGenerated --> MessageEncrypted : encrypt()
-    MessageEncrypted --> MessageDecrypted : decrypt()
-    MessageDecrypted --> KeysGenerated : clear()
-    KeysGenerated --> NoKeys : clear()
-    MessageEncrypted --> NoKeys : clear()
-    NoKeys --> [*] : exit()
-    KeysGenerated --> [*] : exit()
-```
-</details>
-
-<details>
-<summary><strong>5.8 Component Diagram</strong></summary>
+### Module Diagram
 
 ```mermaid
 flowchart TB
-    subgraph Presentation["Presentation Layer"]
-        GUI[CifraHibridaGUI.java]
-    end
-    subgraph Core["Core / Logic Layer"]
-        LOG[CifraHibrida.java]
-    end
-    subgraph Security["Security Layer (JCA / JCE)"]
-        RSA[RSA Cipher]
-        AES[AES Cipher]
-        KG[KeyPairGenerator]
+    subgraph UI["📱  INTERFACE LAYER"]
+        direction LR
+        FRAME["🪟 CifraHibridaGUI extends JFrame\n─────────────\nJTabbedPane\nCifrar tab | Decifrar tab\nNimbus LookAndFeel"]
+        FIELDS["📋 Text Components\n─────────────\nareaTextoClaro\ncampoChaveSessaoCifrada\ncampoIV | areaTextoCifrado\nareaTextoDecifrado"]
     end
 
-    GUI --> LOG
-    LOG --> RSA
-    LOG --> AES
-    LOG --> KG
-```
-</details>
-
-<details>
-<summary><strong>5.9 Deployment Diagram</strong></summary>
-
-```mermaid
-flowchart TB
-    subgraph UserMachine["User's Computer"]
-        subgraph JVM["JVM (Java 8+)"]
-            JAR["teste_cripto.jar\n(CifraHibridaGUI + CifraHibrida)"]
-            JCA["JCA / JCE Crypto Provider"]
-        end
-        OS["Operating System (Windows / Linux / macOS)"]
-    end
-
-    JAR --> JCA
-    JVM --> OS
-```
-</details>
-
-<details>
-<summary><strong>5.10 Package Diagram</strong></summary>
-
-```mermaid
-flowchart TB
-    subgraph app["com.victorsantiago.cifrahibrida"]
-        subgraph gui["gui"]
-            G1[CifraHibridaGUI]
-        end
-        subgraph core["core"]
-            C1[CifraHibrida]
-            C2[EncryptedPayload]
-        end
-    end
-    subgraph jca["java.security / javax.crypto (JCA/JCE)"]
-        K1[KeyPairGenerator]
-        K2[Cipher]
-    end
-
-    gui --> core
-    core --> jca
-```
-</details>
-
-<details>
-<summary><strong>5.11 Composite Structure Diagram</strong></summary>
-
-```mermaid
-flowchart TB
-    subgraph CifraHibrida["CifraHibrida (internal structure)"]
+    subgraph HANDLERS["🎬  EVENT HANDLERS  (in CifraHibridaGUI)"]
         direction TB
-        P1["Port: plaintextIn"]
-        P2["Port: publicKeyIn"]
-        P3["Part: AESEngine"]
-        P4["Part: RSAEngine"]
-        P5["Port: encryptedPayloadOut"]
-
-        P1 --> P3
-        P2 --> P4
-        P3 --> P4
-        P4 --> P5
-        P3 --> P5
+        ENC["🔒 acaoCifrar()\nEncrypt Handler\n────────────\nReads plaintext\nCalls cifra.cifrar()\nWrites hex fields"]
+        DEC["🔓 acaoDecifrar()\nDecrypt Handler\n────────────\nReads hex fields\nBuilds DadosCifrados\nCalls cifra.decifrar()"]
     end
-```
-</details>
 
-<details>
-<summary><strong>5.12 Interaction Overview Diagram</strong></summary>
+    subgraph ENGINE["⚙️  CRYPTO ENGINE  (CifraHibrida.java)"]
+        direction TB
+        KEYGEN["🔑 Constructor\nRSA-2048 KeyPairGenerator\n────────────\nchavePublica\nchavePrivada"]
+        CIFRAR["🔒 cifrar(String)\n────────────\nAES-128-GCM encrypt\nRSA/OAEP wrap AES key"]
+        DECIFRAR["🔓 decifrar(DadosCifrados)\n────────────\nRSA/OAEP unwrap AES key\nAES-128-GCM decrypt+auth"]
+        DATA[("📦 DadosCifrados\n─────────────\nchaveSessaoCifrada\niv\ntextoCifrado")]
+    end
+
+    subgraph CRYPTO["🔐  JDK CRYPTOGRAPHY PROVIDERS"]
+        direction LR
+        RSAPROV["RSA/ECB/OAEPWithSHA-256AndMGF1Padding"]
+        AESPROV["AES/GCM/NoPadding"]
+        SECRAND["SecureRandom\n(12-byte IV)"]
+    end
+
+    subgraph CODEC["🔡  HEX CODEC"]
+        HEX["bytesParaHex / hexParaBytes\n(static helpers)"]
+    end
+
+    FRAME --> FIELDS
+    FIELDS -->|"addActionListener"| ENC & DEC
+    ENC -->|"cifra.cifrar(texto)"| CIFRAR
+    DEC -->|"new DadosCifrados(...)"| DATA
+    DEC -->|"cifra.decifrar(dados)"| DECIFRAR
+    KEYGEN -.->|"generates once"| CIFRAR
+    KEYGEN -.->|"generates once"| DECIFRAR
+    CIFRAR --> AESPROV & RSAPROV & SECRAND
+    CIFRAR --> DATA
+    DECIFRAR --> RSAPROV & AESPROV
+    DATA --> DECIFRAR
+    ENC -->|"bytesParaHex"| CODEC
+    DEC -->|"hexParaBytes"| CODEC
+    CODEC --> FIELDS
+
+    style UI fill:#1e3a5f,color:#fff,stroke:#4a90d9
+    style HANDLERS fill:#1a3a1a,color:#fff,stroke:#4caf50
+    style ENGINE fill:#3a1a1a,color:#fff,stroke:#e57373
+    style CRYPTO fill:#3a2a1a,color:#fff,stroke:#ffb74d
+    style CODEC fill:#2a1a3a,color:#fff,stroke:#ce93d8
+```
+
+### Architecture Layers
 
 ```mermaid
 flowchart LR
-    A["ref: UC01 Generate Key Pair\n(Sequence Diagram 5.4 variant)"] --> B{Keys ready?}
-    B -- Yes --> C["ref: UC02 Encrypt Message\n(Sequence Diagram 5.4)"]
-    B -- No --> A
-    C --> D["ref: UC03 Decrypt Message\n(Sequence Diagram - decrypt path)"]
-    D --> E([End of interaction])
+    subgraph L1["📱 Presentation"]
+        A1["CifraHibridaGUI\nJFrame + JTabbedPane"]
+    end
+    subgraph L2["🎬 Event Handling"]
+        B1["acaoCifrar / acaoDecifrar\nAction Listeners"]
+    end
+    subgraph L3["⚙️ Domain"]
+        C1["CifraHibrida\nEncrypt / Decrypt Logic"]
+    end
+    subgraph L4["🔐 Infrastructure"]
+        D1["javax.crypto / java.security\nRSA + AES-GCM Providers"]
+    end
+
+    L1 --> L2 --> L3 --> L4
+
+    style L1 fill:#1565C0,color:#fff
+    style L2 fill:#2E7D32,color:#fff
+    style L3 fill:#6A1B9A,color:#fff
+    style L4 fill:#BF360C,color:#fff
 ```
-</details>
-
-<details>
-<summary><strong>5.13 Timing Diagram</strong></summary>
-
-```mermaid
-sequenceDiagram
-    participant UI as UI State
-    participant CR as Crypto Engine
-
-    Note over UI,CR: t0 - Application idle
-    UI->>UI: state = NoKeys
-    Note over UI,CR: t1 - "Generate Keys" clicked
-    UI->>CR: generateKeyPair()
-    CR->>UI: keys ready (~50ms)
-    UI->>UI: state = KeysGenerated
-    Note over UI,CR: t2 - "Encrypt" clicked
-    UI->>CR: hybridEncrypt()
-    CR->>UI: payload ready (~20ms)
-    UI->>UI: state = MessageEncrypted
-```
-</details>
 
 ---
 
-## 6. Data Model & Data Dictionary 🗄️
+</details>
+
+## 🛠️ Technology Stack
 
 <details>
-<summary><strong>Click to expand — ERD, Conceptual/Logical/Physical Models & Data Dictionary</strong></summary>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
 
-### 6.1 Entity-Relationship Diagram (ERD)
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><strong>🧠 Language</strong></td>
+<td>Java</td>
+<td>17 (<code>javac.source</code> / <code>javac.target</code>)</td>
+<td>Application source and target bytecode level</td>
+</tr>
+<tr>
+<td>UTF-8</td>
+<td><code>source.encoding</code></td>
+<td>Source file and plaintext string encoding</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>🖼️ UI Toolkit</strong></td>
+<td>Java Swing</td>
+<td>JDK-bundled</td>
+<td><code>JFrame</code>, <code>JTabbedPane</code>, <code>JTextArea</code>, <code>JTextField</code>, <code>JButton</code></td>
+</tr>
+<tr>
+<td>Nimbus LookAndFeel</td>
+<td>JDK-bundled</td>
+<td>Modern cross-platform theme applied via <code>UIManager</code></td>
+</tr>
+<tr>
+<td rowspan="2"><strong>🔐 Asymmetric Crypto</strong></td>
+<td>RSA</td>
+<td>2048-bit</td>
+<td><code>KeyPairGenerator</code> / <code>Cipher</code> — session-key wrapping</td>
+</tr>
+<tr>
+<td>OAEP Padding</td>
+<td>SHA-256 + MGF1</td>
+<td><code>RSA/ECB/OAEPWithSHA-256AndMGF1Padding</code> transformation</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>🔒 Symmetric Crypto</strong></td>
+<td>AES</td>
+<td>128-bit</td>
+<td><code>KeyGenerator</code> / <code>Cipher</code> — message encryption</td>
+</tr>
+<tr>
+<td>GCM Mode</td>
+<td>128-bit auth tag, 12-byte IV</td>
+<td><code>AES/GCM/NoPadding</code> — confidentiality + integrity in one pass</td>
+</tr>
+<tr>
+<td><strong>🎲 Randomness</strong></td>
+<td>SecureRandom</td>
+<td>JDK-bundled</td>
+<td>Cryptographically secure IV generation</td>
+</tr>
+<tr>
+<td><strong>🔡 Encoding</strong></td>
+<td>Custom Hex Codec</td>
+<td>—</td>
+<td><code>bytesParaHex</code> / <code>hexParaBytes</code> static helpers, no external library</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>🔧 Build</strong></td>
+<td>Apache Ant</td>
+<td>NetBeans-generated (<code>build-impl.xml</code>)</td>
+<td>Compile, run, jar, test, clean lifecycle</td>
+</tr>
+<tr>
+<td>NetBeans Project Model</td>
+<td><code>org.netbeans.modules.java.j2seproject</code></td>
+<td>IDE metadata in <code>nbproject/</code></td>
+</tr>
+</tbody>
+</table>
+
+---
+
+</details>
+
+## 🎨 Design Patterns Applied
+
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
+
+| Pattern | Where | Rationale |
+|---------|-------|-----------|
+| 🎁 **Envelope Encryption (Hybrid Cryptosystem)** | `CifraHibrida.cifrar()` / `decifrar()` | The bulk message is encrypted with fast AES; only the small AES key is encrypted with slow RSA |
+| 📦 **Value Object / DTO** | `CifraHibrida.DadosCifrados` (static nested class) | Immutable-by-convention carrier for the three ciphertext components, with only getters |
+| 🧩 **Static Nested Class** | `DadosCifrados` declared inside `CifraHibrida` | Groups the ciphertext shape with the engine that produces and consumes it |
+| 🧭 **Facade** | `cifrar(String)` / `decifrar(DadosCifrados)` | Two one-call methods hide key generation, IV generation, GCM parameter setup and RSA wrapping |
+| 🎬 **Observer / Callback (Lambda Listener)** | `botaoCifrar.addActionListener(e -> acaoCifrar())` | Swing event-driven reaction to button clicks |
+| 🔡 **Codec / Translator** | `bytesParaHex` / `hexParaBytes` | Converts between the binary domain of `javax.crypto` and the text domain of `JTextArea` |
+| 🚦 **Guard Clause** | `if (textoClaro == null \|\| textoClaro.isEmpty())` in `acaoCifrar()` | Early return keeps the happy path in the handler flat |
+| 🏗️ **Static Factory via Constructor** | `new CifraHibrida()` throws checked `Exception` | Key-pair generation is inseparable from object construction, forcing callers to handle failure immediately |
+
+---
+
+</details>
+
+## 📁 Project Structure
+
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
+
+```
+programa_criptografico_chaves/
+│
+├── 📄 README.md                          # 🇺🇸 English (primary)
+├── 📄 README_PT.md                       # 🇧🇷 Português
+├── 📄 README_ES.md                       # 🇪🇸 Español
+├── 📄 .gitignore                         # Ignore rules (NetBeans build/dist artifacts)
+│
+└── 📂 teste_cripto/                      # NetBeans Ant Java SE project (real project name)
+    │
+    ├── 📄 build.xml                      # Ant entry point, imports nbproject/build-impl.xml
+    ├── 📄 manifest.mf                    # JAR manifest stub (Main-Class injected by the build)
+    │
+    ├── 📂 src/
+    │   ├── 📄 CifraHibrida.java          # ★ Crypto engine — key gen, cifrar(), decifrar() (113 lines)
+    │   └── 📄 CifraHibridaGUI.java       # ★ Swing GUI — JFrame, tabs, event handlers (249 lines)
+    │
+    ├── 📂 nbproject/
+    │   ├── 📄 project.xml                # NetBeans project type + source/test root declarations
+    │   ├── 📄 project.properties         # javac.source=17, main.class, dist.jar, run.classpath, ...
+    │   ├── 📄 build-impl.xml             # Generated Ant implementation (compile/run/jar/test/clean)
+    │   ├── 📄 genfiles.properties         # NetBeans internal generation bookkeeping
+    │   └── 📂 private/                   # Local, machine-specific NetBeans settings (not portable)
+    │
+    ├── 📂 build/                         # 📤 Compiled .class output (created by `ant compile`, deletable)
+    │
+    └── 📂 dist/                          # 📤 Distribution output (created by `ant jar`)
+        ├── 📄 README.TXT                 # NetBeans-generated boilerplate about the dist folder
+        └── 📄 teste_cripto.jar           # Runnable JAR (Main-Class: CifraHibridaGUI)
+```
+
+> [!NOTE]
+> `build/` and `dist/` are generated artifacts, not source. They are recreated by `ant compile` / `ant jar` and can be safely deleted with `ant clean`. There is no `test/` source folder despite `nbproject/project.properties` declaring `test.src.dir=test` — the directory was never created, so no automated tests exist yet. See [Automated Tests](#-automated-tests).
+
+---
+
+</details>
+
+## 📦 System Modules
+
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
+
+### 🔐 CifraHibrida — Hybrid Crypto Engine
+
+`CifraHibrida.java` is the entire cryptographic core of the application: 113 lines, one public class, one nested static class, six methods total (constructor, `cifrar`, `decifrar`, `getChaveSessaoCifrada`/`getIv`/`getTextoCifrado` on the nested type, plus the two static hex helpers).
+
+| Responsibility | Implementation |
+|-----------------|-----------------|
+| Key-pair generation | Constructor: `KeyPairGenerator.getInstance("RSA")`, `initialize(2048)`, `generateKeyPair()` |
+| Held state | `private PublicKey chavePublica;` `private PrivateKey chavePrivada;` — never exposed via getters |
+| Encryption entry point | `public DadosCifrados cifrar(String textoClaro) throws Exception` |
+| Decryption entry point | `public String decifrar(DadosCifrados dados) throws Exception` |
+| Failure mode | Every checked crypto exception (`NoSuchAlgorithmException`, `InvalidKeyException`, `BadPaddingException`, ...) propagates as `Exception` to the caller |
+
+---
+
+### 📦 DadosCifrados — Ciphertext Container
+
+A `public static class` nested inside `CifraHibrida`. It is a plain, three-field immutable carrier (fields are `private` and set only in the constructor; no setters exist).
+
+| Field | Type | Meaning |
+|-------|------|---------|
+| `chaveSessaoCifrada` | `byte[]` | The 128-bit AES session key, after RSA/OAEP encryption with the public key |
+| `iv` | `byte[]` | The 12-byte GCM initialization vector (nonce) generated fresh per encryption |
+| `textoCifrado` | `byte[]` | The AES-GCM ciphertext, with the 128-bit authentication tag appended by the JCE provider |
+
+Accessed through `getChaveSessaoCifrada()`, `getIv()`, `getTextoCifrado()`. `CifraHibridaGUI` also constructs a `DadosCifrados` directly via its public constructor when reassembling hex input back into bytes for decryption.
+
+---
+
+### 🖼️ CifraHibridaGUI — Swing Interface
+
+`CifraHibridaGUI.java` (249 lines) extends `JFrame` and owns the entire presentation layer plus the two event handlers that bridge the UI to `CifraHibrida`.
+
+| Responsibility | Implementation |
+|-----------------|-----------------|
+| Window setup | Constructor calls `super("Cifra Híbrida - Interface Moderna")`, instantiates `CifraHibrida`, calls `inicializarComponentes()` |
+| Look and feel | Iterates `UIManager.getInstalledLookAndFeels()`, applies `"Nimbus"` if found, in both the constructor path and `main()` |
+| Layout | `JTabbedPane` with two tabs: `"Cifrar"` (`painelCifrar`) and `"Decifrar"` (`painelDecifrar`), each a `BorderLayout` of titled sub-panels |
+| Encrypt tab fields | `areaTextoClaro` (input), `campoChaveSessaoCifrada`, `campoIV`, `areaTextoCifrado` (read-only outputs) |
+| Decrypt tab fields | `areaChaveSessaoCifrada`, `areaIV`, `areaTextoCifradoDecifrar` (inputs), `areaTextoDecifrado` (read-only output) |
+| Entry point | `public static void main(String[] args)` — sets Nimbus, then `SwingUtilities.invokeLater(() -> new CifraHibridaGUI().setVisible(true))` |
+
+---
+
+### 🎬 Event Handlers
+
+| Handler | Trigger | Behaviour |
+|---------|---------|-----------|
+| `acaoCifrar()` | Click on `botaoCifrar` ("Cifrar Texto") | Validates non-empty plaintext, calls `cifra.cifrar(textoClaro)`, writes the three results as hex into the encrypt-tab fields |
+| `acaoDecifrar()` | Click on `botaoDecifrar` ("Decifrar Texto") | Validates all three hex fields are non-empty, converts them to bytes, builds a `DadosCifrados`, calls `cifra.decifrar(dados)`, writes the plaintext result |
+
+Both handlers catch `Exception` broadly and surface the message via `JOptionPane.showMessageDialog`, so a malformed hex string or a tampered GCM tag never crashes the UI thread — it produces a dialog instead.
+
+---
+
+### 🔡 Hex Codec Helpers
+
+Two `public static` utility methods on `CifraHibrida`, used by both the class itself (indirectly, through the GUI) and directly by `CifraHibridaGUI`.
+
+| Method | Signature | Behaviour |
+|--------|-----------|-----------|
+| `bytesParaHex` | `static String bytesParaHex(byte[] bytes)` | Appends `String.format("%02X", b)` for every byte — uppercase, no separators |
+| `hexParaBytes` | `static byte[] hexParaBytes(String hex)` | Parses two hex characters per output byte via `Character.digit(c, 16)`; assumes well-formed, even-length input |
+
+> [!NOTE]
+> `hexParaBytes` performs no length or character-set validation. An odd-length or non-hex string throws an unchecked exception (`StringIndexOutOfBoundsException` or a malformed byte value) that is caught only by the broad `catch (Exception ex)` in `acaoDecifrar()`.
+
+---
+
+</details>
+
+## 💼 Business Rules
+
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
+
+### 🔑 Key Lifecycle Rules
+
+| # | Rule | Enforcement |
+|---|------|-------------|
+| BR-01 | Exactly one RSA-2048 key pair exists per running `CifraHibrida` instance | Generated once, in the constructor, never regenerated |
+| BR-02 | The private key is never serialized, displayed, or written to disk | No getter exists for `chavePrivada`; no file I/O in the class |
+| BR-03 | A fresh key pair is generated on every application launch | `new CifraHibrida()` is called once in the `CifraHibridaGUI` constructor, which itself runs once per process |
+
+### 🔒 Encryption Rules
+
+| # | Rule | Enforcement |
+|---|------|-------------|
+| BR-04 | Every encryption uses a brand-new, single-use AES-128 key | `KeyGenerator.getInstance("AES").init(128)` inside `cifrar()`, called per invocation |
+| BR-05 | Every encryption uses a brand-new, 12-byte random IV | `SecureRandom.nextBytes(iv)` inside `cifrar()` |
+| BR-06 | The AES key is never transmitted or displayed in the clear | Only `chaveSessaoCifrada` (the RSA-wrapped form) leaves `cifrar()` |
+| BR-07 | Plaintext must be UTF-8 encodable | `textoClaro.getBytes("UTF-8")` — throws on encoding failure (practically never for `String`) |
+
+### 🔓 Decryption Rules
+
+| # | Rule | Enforcement |
+|---|------|-------------|
+| BR-08 | Decryption requires all three components: wrapped key, IV, ciphertext | `decifrar(DadosCifrados)` takes a single composite argument; the GUI blocks submission if any hex field is empty |
+| BR-09 | The GCM authentication tag must verify or decryption fails | `Cipher.doFinal` throws `AEADBadTagException` (a subtype of `Exception`) on tampered ciphertext or wrong key |
+| BR-10 | Decryption is only possible with the private key that matches the public key used to wrap the session key | RSA is asymmetric; a mismatched key pair fails at `cifraRSA.doFinal` |
+
+---
+
+</details>
+
+## ✅ Functional Requirements
+
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
+
+| ID | Requirement | Priority | Status |
+|----|-------------|----------|--------|
+| **RF-01** | The system shall generate an RSA-2048 key pair on startup | 🔴 High | ✅ Implemented |
+| **RF-02** | The system shall present a GUI with an "Cifrar" (Encrypt) tab and a "Decifrar" (Decrypt) tab | 🔴 High | ✅ Implemented |
+| **RF-03** | The system shall accept arbitrary plaintext in a multi-line text area | 🔴 High | ✅ Implemented |
+| **RF-04** | The system shall reject an empty-plaintext encryption attempt with a dialog | 🟡 Medium | ✅ Implemented |
+| **RF-05** | The system shall generate a fresh AES-128 key per encryption | 🔴 High | ✅ Implemented |
+| **RF-06** | The system shall generate a fresh 12-byte IV per encryption | 🔴 High | ✅ Implemented |
+| **RF-07** | The system shall encrypt plaintext with AES/GCM/NoPadding | 🔴 High | ✅ Implemented |
+| **RF-08** | The system shall wrap the AES key with RSA/ECB/OAEPWithSHA-256AndMGF1Padding | 🔴 High | ✅ Implemented |
+| **RF-09** | The system shall display the wrapped key, IV and ciphertext as uppercase hexadecimal | 🔴 High | ✅ Implemented |
+| **RF-10** | The system shall accept hexadecimal wrapped key, IV and ciphertext for decryption | 🔴 High | ✅ Implemented |
+| **RF-11** | The system shall reject a decryption attempt with any empty field | 🟡 Medium | ✅ Implemented |
+| **RF-12** | The system shall unwrap the AES key with the RSA private key | 🔴 High | ✅ Implemented |
+| **RF-13** | The system shall decrypt and authenticate the ciphertext with AES/GCM | 🔴 High | ✅ Implemented |
+| **RF-14** | The system shall display the recovered plaintext in a read-only text area | 🔴 High | ✅ Implemented |
+| **RF-15** | The system shall show an error dialog on any encryption failure | 🟡 Medium | ✅ Implemented |
+| **RF-16** | The system shall show an error dialog on any decryption failure (including tag mismatch) | 🟡 Medium | ✅ Implemented |
+| **RF-17** | The system shall apply the Nimbus Look and Feel when available | 🟢 Low | ✅ Implemented |
+| **RF-18** | The system shall exit the process if key-pair generation fails at startup | 🟡 Medium | ✅ Implemented |
+| **RF-19** | The system shall run as a standalone runnable JAR with `Main-Class: CifraHibridaGUI` | 🔴 High | ✅ Implemented |
+| **RF-20** | The system shall persist the encryption key across application restarts | 🟢 Low | ⬜ Planned |
+| **RF-21** | The system shall validate hexadecimal input before attempting to decode it | 🟡 Medium | ⬜ Planned |
+| **RF-22** | The system shall support saving cipher output to a file | 🟢 Low | ⬜ Planned |
+
+---
+
+</details>
+
+## ⚡ Non-Functional Requirements
+
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
+
+| ID | Category | Requirement | Target |
+|----|----------|-------------|--------|
+| **RNF-01** | ⚡ Performance | RSA-2048 key-pair generation on startup | < 500 ms on commodity hardware |
+| **RNF-02** | ⚡ Performance | Encrypt / decrypt round-trip for short text | < 50 ms |
+| **RNF-03** | 🔐 Security | Symmetric cipher mode | Authenticated (AES-GCM), never unauthenticated ECB/CBC for message data |
+| **RNF-04** | 🔐 Security | Asymmetric padding scheme | OAEP (never raw/PKCS#1 v1.5) for the RSA key-wrap step |
+| **RNF-05** | 🔐 Security | Random source for keys and IVs | `SecureRandom` / JCE default (CSPRNG), never `java.util.Random` |
+| **RNF-06** | 📦 Footprint | Runnable JAR size | < 20 KB (no bundled dependencies) |
+| **RNF-07** | 🧠 Memory | Resident heap for a single `CifraHibrida` instance | < 10 MB |
+| **RNF-08** | 🎨 Usability | Every action produces visible feedback (dialog or field update) | 100% of button clicks |
+| **RNF-09** | 🖥️ Portability | Runs unmodified on any JDK 17+ host with a display (Windows, Linux, macOS) | No native code, no platform-specific APIs |
+| **RNF-10** | 🔧 Maintainability | Zero third-party dependencies | Only `javax.crypto`, `java.security`, `javax.swing` |
+| **RNF-11** | 🧱 Build reproducibility | Deterministic Ant build via NetBeans project files | `ant clean jar` produces the same class layout every time |
+| **RNF-12** | 🌍 Internationalization | UI labels | Currently Portuguese-only literals, not externalized |
+| **RNF-13** | ♿ Accessibility | Text areas and fields readable by screen readers | Standard Swing components (baseline JAAS/AT-SPI support), no custom rendering |
+| **RNF-14** | 🧪 Testability | Crypto logic separable from UI for unit testing | `CifraHibrida` has zero Swing dependency, so it is independently testable |
+
+---
+
+</details>
+
+## 🗄️ Data Model
+
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
+
+> [!NOTE]
+> This application has **no database and no file persistence**. There is nothing to model in a traditional relational or document sense. What follows is the in-memory object shape held during a session, and the hexadecimal wire format that is the only thing that ever crosses a trust boundary (the GUI text fields, and by extension a user's clipboard or notes if they copy the values out).
+
+### Entity-Relationship Diagram
 
 ```mermaid
 erDiagram
+    CIFRA_HIBRIDA ||--|| KEY_PAIR : "owns (in-memory only)"
+    CIFRA_HIBRIDA ||--o{ DADOS_CIFRADOS : "produces via cifrar()"
+    DADOS_CIFRADOS ||--|| HEX_ENVELOPE : "serialized as"
+    KEY_PAIR ||--|| RSA_PUBLIC_KEY : "contains"
+    KEY_PAIR ||--|| RSA_PRIVATE_KEY : "contains"
+    DADOS_CIFRADOS ||--|| AES_SESSION_KEY : "wraps (encrypted form only)"
+
+    CIFRA_HIBRIDA {
+        PublicKey chavePublica "held for lifetime of the JVM process"
+        PrivateKey chavePrivada "never exposed, never persisted"
+    }
+
     KEY_PAIR {
-        string id PK
-        string algorithm
-        int keySizeBits
-        string publicKeyBase64
-        string privateKeyBase64
-        datetime createdAt
-    }
-    MESSAGE {
-        string id PK
-        string plaintext
-        datetime createdAt
-    }
-    ENCRYPTED_PAYLOAD {
-        string id PK
-        string encryptedMessageAES
-        string encryptedSessionKeyRSA
-        string iv
-        string keyPairId FK
-        string messageId FK
+        string algorithm "RSA"
+        int keySize "2048 bits"
+        string lifetime "process-scoped, regenerated each launch"
     }
 
-    KEY_PAIR ||--o{ ENCRYPTED_PAYLOAD : "wraps session key for"
-    MESSAGE  ||--|| ENCRYPTED_PAYLOAD : "originates"
+    DADOS_CIFRADOS {
+        bytes chaveSessaoCifrada "RSA/OAEP-wrapped AES-128 key, 256 bytes"
+        bytes iv "GCM nonce, 12 bytes"
+        bytes textoCifrado "AES-GCM ciphertext plus 16-byte tag"
+    }
+
+    AES_SESSION_KEY {
+        string algorithm "AES"
+        int keySize "128 bits"
+        string scope "single encryption call, never reused"
+    }
+
+    HEX_ENVELOPE {
+        string chaveSessaoCifradaHex "uppercase hex, 512 characters"
+        string ivHex "uppercase hex, 24 characters"
+        string textoCifradoHex "uppercase hex, variable length"
+    }
 ```
 
-### 6.2 Conceptual Data Model
-A simplified, technology-agnostic view: a **User** generates a **Key Pair**, writes a **Message**, and produces an **Encrypted Payload** that bundles the AES ciphertext with the RSA-wrapped AES key.
+### In-Memory Object Shape
 
-### 6.3 Logical Data Model
-| Entity | Attribute | Type | Notes |
-|:---|:---|:---|:---|
-| KeyPair | id | UUID | Generated per session |
-| KeyPair | algorithm | String | "RSA" |
-| KeyPair | keySizeBits | Integer | 2048 (NFR01) |
-| KeyPair | publicKeyBase64 | String | Displayed to user |
-| KeyPair | privateKeyBase64 | String | Displayed to user (local only) |
-| Message | plaintext | String (UTF-8) | User input |
-| EncryptedPayload | encryptedMessageAES | byte[] / Base64 | AES-256 ciphertext |
-| EncryptedPayload | encryptedSessionKeyRSA | byte[] / Base64 | RSA-wrapped AES key |
-| EncryptedPayload | iv | byte[] / Base64 | Initialization vector (if CBC mode) |
+| Field | Owner | Type | Persisted? | Notes |
+|-------|-------|------|-----------|-------|
+| `chavePublica` | `CifraHibrida` | `java.security.PublicKey` | No | Lives only in heap memory |
+| `chavePrivada` | `CifraHibrida` | `java.security.PrivateKey` | No | Never leaves the object, no getter |
+| `chaveSessaoCifrada` | `DadosCifrados` | `byte[]` (256 bytes for RSA-2048/OAEP-SHA256) | No | RSA-wrapped, safe to display as hex |
+| `iv` | `DadosCifrados` | `byte[]` (12 bytes) | No | GCM nonce, not secret but must never repeat under the same key |
+| `textoCifrado` | `DadosCifrados` | `byte[]` (plaintext length + 16-byte GCM tag) | No | Ciphertext with authentication tag appended by the JCE provider |
 
-### 6.4 Physical Data Model
-The current version is **in-memory only** (NFR05/DAR04) — no tables are persisted. If persistence were added, the model above maps directly to relational tables (`key_pair`, `message`, `encrypted_payload`) with `VARCHAR`/`BLOB` columns matching the Logical Data Model.
+### Hexadecimal Wire Format
 
-### 6.5 Data Dictionary
+| Field | Source Bytes | Hex Characters | Example Shape |
+|-------|--------------|-----------------|-----------------|
+| Chave de Sessão Cifrada | 256 bytes (RSA-2048 output block) | 512 hex chars | `A1B2C3...` (512 chars) |
+| IV (Nonce) | 12 bytes | 24 hex chars | `9F00A1B2C3D4E5F607182930` |
+| Texto Cifrado | plaintext length + 16 | 2×(N+16) hex chars | variable, grows with message length |
 
-| Field | Type | Description | Constraints |
-|:---|:---|:---|:---|
-| `publicKey` | `java.security.PublicKey` | RSA public key, shareable | Algorithm = RSA, size = 2048 bits |
-| `privateKey` | `java.security.PrivateKey` | RSA private key, secret | Never transmitted (BR05) |
-| `sessionKey` | `javax.crypto.SecretKey` | AES key, generated per message | Algorithm = AES, size = 256 bits, single-use (BR02) |
-| `plaintext` | `String` | Original user message | UTF-8 encoded |
-| `encryptedMessageAES` | `byte[]` | Ciphertext of `plaintext` | AES cipher output |
-| `encryptedSessionKeyRSA` | `byte[]` | `sessionKey` encrypted with `publicKey` | RSA cipher output |
-
-</details>
+There is no length-prefix, no delimiter, and no envelope format binding these three hex strings together beyond the three separate Swing fields; a user must copy all three correctly and in order for `acaoDecifrar()` to succeed.
 
 ---
 
-## 7. Data Flow Diagram (DFD) & Data Lineage 🔄
-
-<details>
-<summary><strong>Click to expand — DFD Level 0/1 and Data Lineage</strong></summary>
-
-### 7.1 Data Flow Diagram (Level 0/1)
-
-```mermaid
-flowchart LR
-    U([User]) -->|plaintext message| P1[("1.0 Encrypt\n(AES + RSA)")]
-    KS[("Key Store\n(in-memory)")] -->|RSA public key| P1
-    P1 -->|ciphertext + encrypted session key| U
-
-    U -->|ciphertext + encrypted session key| P2[("2.0 Decrypt\n(RSA + AES)")]
-    KS -->|RSA private key| P2
-    P2 -->|recovered plaintext| U
-
-    U -->|"generate keys"| P0[("0.0 Generate Key Pair")]
-    P0 -->|public/private key pair| KS
-```
-
-### 7.2 Data Lineage Diagram
-
-```mermaid
-flowchart LR
-    A[Plaintext message] -->|AES encrypt| B[AES Ciphertext]
-    C[Random AES session key] -->|RSA encrypt with public key| D[Encrypted session key]
-    C -.->|used to produce| B
-    B --> E[Encrypted Payload]
-    D --> E
-    E -->|RSA decrypt with private key| C2[Recovered AES session key]
-    E -->|AES decrypt with recovered key| A2[Recovered plaintext]
-    C2 -.-> A2
-```
-
 </details>
 
----
-
-## 8. Architecture Diagram & Flowchart 🏛️
+## 🔄 System Flows
 
 <details>
-<summary><strong>Click to expand — Architecture Overview & Main Flowchart</strong></summary>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
 
-### 8.1 Architecture Diagram
+### Encrypt Flow
 
 ```mermaid
-flowchart TB
-    subgraph L1["Presentation Layer"]
-        UI[Java Swing GUI - CifraHibridaGUI]
-    end
-    subgraph L2["Application / Logic Layer"]
-        LOGIC[CifraHibrida - hybrid encryption logic]
-    end
-    subgraph L3["Security Layer"]
-        JCA["Java Cryptography Architecture (JCA/JCE)\nRSA Cipher | AES Cipher | KeyPairGenerator"]
-    end
-    subgraph L4["Runtime"]
-        JVM["JVM 8+"]
-    end
+sequenceDiagram
+    autonumber
+    participant U as 👤 User
+    participant G as 🖼️ CifraHibridaGUI
+    participant C as 🔐 CifraHibrida
+    participant J as ⚙️ JCE Providers
 
-    UI --> LOGIC --> JCA --> JVM
+    U->>G: Type plaintext, click "Cifrar Texto"
+    G->>G: acaoCifrar() — validate non-empty
+    alt Plaintext empty
+        G-->>U: JOptionPane "Digite um texto para cifrar."
+    else Plaintext present
+        G->>C: cifra.cifrar(textoClaro)
+        C->>J: KeyGenerator("AES").init(128).generateKey()
+        J-->>C: chaveAES (128-bit)
+        C->>J: SecureRandom.nextBytes(iv[12])
+        C->>J: Cipher("AES/GCM/NoPadding").doFinal(textoClaro)
+        J-->>C: textoCifrado (+ 16-byte tag)
+        C->>J: Cipher("RSA/ECB/OAEPWithSHA-256AndMGF1Padding").doFinal(chaveAES)
+        J-->>C: chaveSessaoCifrada
+        C-->>G: DadosCifrados(chaveSessaoCifrada, iv, textoCifrado)
+        G->>G: bytesParaHex() on all three fields
+        G-->>U: Populate campoChaveSessaoCifrada, campoIV, areaTextoCifrado
+    end
 ```
 
-### 8.2 Main Flowchart (Encrypt / Decrypt Cycle)
+### Decrypt Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 👤 User
+    participant G as 🖼️ CifraHibridaGUI
+    participant C as 🔐 CifraHibrida
+    participant J as ⚙️ JCE Providers
+
+    U->>G: Paste hex key/IV/ciphertext, click "Decifrar Texto"
+    G->>G: acaoDecifrar() — validate all fields non-empty
+    alt Any field empty
+        G-->>U: JOptionPane "Preencha todos os campos..."
+    else All fields present
+        G->>G: hexParaBytes() on all three fields
+        G->>G: new DadosCifrados(chaveSessaoCifrada, iv, textoCifrado)
+        G->>C: cifra.decifrar(dados)
+        C->>J: Cipher("RSA/ECB/OAEP...").doFinal(chaveSessaoCifrada)
+        J-->>C: chaveAESBytes
+        C->>C: new SecretKeySpec(chaveAESBytes, "AES")
+        C->>J: Cipher("AES/GCM/NoPadding").doFinal(textoCifrado)
+        alt GCM tag invalid or wrong key
+            J-->>C: throws AEADBadTagException
+            C-->>G: propagates Exception
+            G-->>U: JOptionPane "Erro ao decifrar: ..."
+        else Tag valid
+            J-->>C: textoClaroBytes
+            C-->>G: new String(textoClaroBytes, "UTF-8")
+            G-->>U: areaTextoDecifrado.setText(texto)
+        end
+    end
+```
+
+### GUI Event Flow
 
 ```mermaid
 flowchart TD
-    Start([Open Application]) --> Gen[Click "Generate Keys"]
-    Gen --> Type[Type message]
-    Type --> Enc[Click "Encrypt"]
-    Enc --> Out1[View AES ciphertext + RSA-encrypted key]
-    Out1 --> Share{Share with recipient?}
-    Share -- Yes --> Dec[Click "Decrypt" with private key]
-    Share -- No --> Clear[Click "Clear"]
-    Dec --> Out2[View recovered original message]
-    Out2 --> Clear
-    Clear --> Decide{Continue?}
-    Decide -- Yes --> Type
-    Decide -- No --> Exit([Click "Exit"])
+    START([Application launch]) --> MAIN[main: apply Nimbus,\ninvokeLater]
+    MAIN --> CTOR[CifraHibridaGUI constructor]
+    CTOR --> KEYPAIR{CifraHibrida()\nkey-pair generation}
+    KEYPAIR -- Exception --> FATAL[showMessageDialog +\nSystem.exit 1]
+    KEYPAIR -- OK --> INIT[inicializarComponentes\nbuild tabs and fields]
+    INIT --> READY([Window visible, idle])
+    READY -- click Cifrar --> ENC[acaoCifrar]
+    READY -- click Decifrar --> DEC[acaoDecifrar]
+    ENC --> READY
+    DEC --> READY
+
+    style START fill:#1565C0,color:#fff
+    style READY fill:#2E7D32,color:#fff
+    style FATAL fill:#B71C1C,color:#fff
 ```
 
-</details>
-
----
-
-## 9. Persona & User Journey Map 👤
-
-<details>
-<summary><strong>Click to expand — Persona and User Journey Map</strong></summary>
-
-### 9.1 Persona
-
-| | |
-|:---|:---|
-| **Name** | Ana Souza |
-| **Role** | Computer Science student / junior backend developer |
-| **Goal** | Understand, hands-on, how hybrid encryption (RSA + AES) works before applying it in a real project. |
-| **Tech Level** | Comfortable with Java, new to applied cryptography (JCA/JCE). |
-| **Frustrations** | Cryptography theory feels abstract; wants a visual, click-by-click tool to see keys and ciphertext. |
-| **Motivation** | Needs to pass a Security course assignment and build a portfolio project. |
-
-### 9.2 User Journey Map
+### Key Pair State Machine
 
 ```mermaid
-journey
-    title User Journey - Encrypt and Share a Message
-    section Setup
-      Open application: 5: User
-      Click "Generate Keys": 4: User
-    section Encryption
-      Type message: 5: User
-      Click "Encrypt": 5: User
-      Copy ciphertext and encrypted key: 3: User
-    section Sharing
-      Send encrypted data to recipient: 4: User
-    section Decryption
-      Paste received data: 4: User
-      Click "Decrypt": 5: User
-      Read original message: 5: User
+stateDiagram-v2
+    [*] --> Uninitialized: JVM starts
+    Uninitialized --> Generating: new CifraHibrida()
+    Generating --> Ready: KeyPairGenerator succeeds
+    Generating --> Failed: Exception thrown
+    Failed --> [*]: System.exit(1)
+    Ready --> Ready: cifrar() / decifrar() calls
+    Ready --> [*]: Application closed (keys discarded)
 ```
-
-</details>
 
 ---
 
-## 10. Wireframes & Mockups 🖼️
+</details>
+
+## 🔐 Security
 
 <details>
-<summary><strong>Click to expand — GUI Wireframe</strong></summary>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│  🔒 Hybrid Cipher Program — RSA + AES                          │
-├──────────────────────────────────────────────────────────────┤
-│  Public Key:   [ readonly text area, Base64                ]  │
-│  Private Key:  [ readonly text area, Base64                ]  │
-│                                       [ 🗝️ Generate Keys ]     │
-├──────────────────────────────────────────────────────────────┤
-│  Message:      [ multiline input text area                 ]  │
-│                                       [ 🔒 Encrypt ]           │
-│  Encrypted (AES):     [ readonly text area, Base64         ]  │
-│  Encrypted Key (RSA): [ readonly text area, Base64         ]  │
-├──────────────────────────────────────────────────────────────┤
-│                                       [ 🔓 Decrypt ]           │
-│  Decrypted Message:   [ readonly text area                 ]  │
-├──────────────────────────────────────────────────────────────┤
-│              [ 🧹 Clear ]                  [ 🚪 Exit ]         │
-└──────────────────────────────────────────────────────────────┘
-```
+### Implemented Controls
 
-*Mockup reflects the actual `CifraHibridaGUI` Swing layout: text areas for keys, message and results, plus action buttons (Generate Keys, Encrypt, Decrypt, Clear, Exit).*
+| Control | Implementation | Effect |
+|---------|---------------|--------|
+| 🔑 **Strong asymmetric key size** | RSA `initialize(2048)` | Meets current (2026) minimum recommended RSA strength |
+| 🎁 **OAEP padding, not PKCS#1 v1.5** | `RSA/ECB/OAEPWithSHA-256AndMGF1Padding` | Resistant to Bleichenbacher-style padding oracle attacks that plague raw PKCS#1 v1.5 |
+| 🔒 **Authenticated symmetric encryption** | `AES/GCM/NoPadding`, 128-bit tag | Confidentiality and integrity/authenticity in a single primitive; tampering is detected, not silently decrypted |
+| 🎲 **Fresh IV per encryption** | `SecureRandom` generates a new 12-byte IV inside every `cifrar()` call | Prevents the catastrophic nonce-reuse failure mode of AES-GCM |
+| 🎯 **Fresh session key per encryption** | New `AES` `SecretKey` generated inside every `cifrar()` call | Limits the blast radius of any single key compromise to one message |
+| 🚫 **Private key never exposed** | No getter for `chavePrivada`; never logged, printed, or serialized | Cannot leak through the object's public API |
+| 🌐 **No network exposure** | No sockets, no HTTP client, no listening port anywhere in the code | Ciphertext, keys and plaintext never leave the local process |
+| ✅ **Exceptions surfaced, not swallowed** | Both handlers catch and display `Exception`, never silently ignore a crypto failure | A tampered or corrupted ciphertext produces a visible error, not a wrong "successful" decryption |
 
-</details>
+### Known Security Limitations
+
+> [!WARNING]
+> This is a teaching/demonstration project. The limitations below are inherent to its current scope and should be understood, and most should be resolved, before any adaptation to a production or sensitive-data context.
+
+| Limitation | Risk | Mitigation path |
+|------------|------|-----------------|
+| 🗝️ **RSA key pair is never persisted** | Ciphertext encrypted in one session is **permanently undecryptable** once the application closes, unless the user manually saved the hex-encoded wrapped key alongside a separately exported private key (which the GUI provides no way to do) | Add explicit key export/import (e.g., PKCS#8/X.509 PEM files, optionally passphrase-encrypted) |
+| 🔄 **A new key pair is generated on every launch** | Data encrypted in session A can never be decrypted in session B, even by the same user on the same machine, because `chavePrivada` is regenerated from scratch | Load a persisted key pair at startup instead of always calling `generateKeyPair()` |
+| 🕵️ **No authentication of the RSA public key** | The GUI never displays a fingerprint of `chavePublica`; a user has no way to verify which key pair a given ciphertext was encrypted against if multiple sessions or machines are involved | Display a SHA-256 fingerprint of the public key in the UI for out-of-band verification |
+| 🧪 **No hex-input validation before decoding** | `hexParaBytes` on malformed input (odd length, non-hex characters) throws an unchecked exception, caught only by the broad `catch (Exception ex)` in `acaoDecifrar()` | Validate with a regex (`^[0-9A-Fa-f]+$` and even length) before calling `hexParaBytes`, with a specific user-facing message |
+| 📋 **Plaintext and ciphertext travel through Swing `JTextArea` / clipboard** | If the user copies hex output to share it, the AES-wrapped key and ciphertext may be retained in OS clipboard history or accidentally pasted elsewhere | Document this in a UI warning; avoid the pattern for any real secret |
+| 🧵 **No memory zeroing of key material** | `byte[]` backing the AES key and the RSA private key components are left to the garbage collector, not explicitly wiped | Use `Arrays.fill(sensitiveArray, (byte) 0)` after use where the API surface allows it |
+| ⚖️ **"RSA/ECB/..." naming is a Java/JCE convention, not literal block-cipher ECB** | The word "ECB" in the transformation string can mislead a reader into thinking RSA is used in ECB block-cipher mode; in the JCE, `ECB` here is a required-but-meaningless placeholder for RSA's mode field, and OAEP is the actual, secure padding in effect | None needed technically; document the naming clearly (as done here) so it is not confused with AES-ECB, which is genuinely insecure |
+| 🧾 **No logging or audit trail** | No record of when encryption/decryption occurred, by whom, or how many attempts failed | Out of scope for a single-user desktop demo; would matter in a multi-user deployment |
 
 ---
+
+</details>
 
 ## 🚀 Installation & Execution
 
-### Prerequisites
-- **Java JDK 8+**
-- **Apache NetBeans** *(optional, only needed to build via IDE)*
-- **Git**
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
 
-### Option 1 — Run the pre-built JAR (recommended)
+### Prerequisites
 
 ```bash
-git clone https://github.com/VictorHJesusSantiago/programa_criptografico_chaves.git
-cd programa_criptografico_chaves/teste_cripto/dist
-java -jar teste_cripto.jar
+# Java Development Kit 17 or newer (javac.source/target = 17)
+java -version         # expect 17+
+javac -version        # expect 17+
+
+# Apache Ant (bundled with NetBeans, or install standalone)
+ant -version           # expect Ant 1.9+
+
+# Optional: Apache NetBeans IDE for a graphical build/run/debug experience
 ```
 
-### Option 2 — Build & run via NetBeans
+### Build
 
+```bash
+# Navigate into the actual NetBeans project (not the repo root)
+cd teste_cripto
+
+# Compile all sources into build/classes
+ant compile
+
+# Build the full project (compile + copy resources)
+ant
+
+# Package the runnable JAR into dist/teste_cripto.jar
+ant jar
+
+# Remove all generated build and dist artifacts
+ant clean
 ```
-1. Open Apache NetBeans IDE
-2. File → Open Project...
-3. Select the 'teste_cripto' folder
-4. Click "Run Project" (F6)
+
+### Execution
+
+```bash
+# Option A — run through Ant (compiles if needed, then launches the GUI)
+cd teste_cripto
+ant run
+
+# Option B — run the packaged JAR directly
+java -jar dist/teste_cripto.jar
+
+# Option C — run the compiled class directly (after `ant compile`)
+java -cp build/classes CifraHibridaGUI
 ```
 
-### How to Use
+**In-app usage**
 
-| Step | Action |
-|:-:|:---|
-| 1️⃣ | Click **Generate Keys** to create the RSA key pair. |
-| 2️⃣ | Type the message you want to protect. |
-| 3️⃣ | Click **Encrypt** — the AES ciphertext and the RSA-encrypted session key are displayed. |
-| 4️⃣ | Click **Decrypt** to recover the original message using the private key. |
-| 5️⃣ | Use **Clear** to reset all fields, or **Exit** to close the application. |
+1. Launch **CifraHibrida** — the "Cifrar" tab is shown first, and an RSA-2048 key pair is generated silently in the background.
+2. Type any text into the "Texto Claro" box and click **Cifrar Texto**.
+3. The "Chave de Sessão Cifrada", "IV (Nonce)" and "Texto Cifrado" fields fill in with hexadecimal values.
+4. Switch to the "Decifrar" tab and paste those same three hex values into the matching fields.
+5. Click **Decifrar Texto** — the original plaintext reappears in "Texto Decifrado".
+6. Closing the window ends the process and discards the RSA key pair; values decrypt only within the same running session.
+
+### Ant Targets
+
+| Target | Purpose |
+|--------|---------|
+| `ant compile` | Compile `src/*.java` into `build/classes` |
+| `ant` (default) | Build the project (equivalent to `ant compile`) |
+| `ant jar` | Produce `dist/teste_cripto.jar` with `Main-Class: CifraHibridaGUI` |
+| `ant run` | Compile (if needed) and launch `CifraHibridaGUI` |
+| `ant test` | Run the (currently absent) `test/` source set — see [Automated Tests](#-automated-tests) |
+| `ant clean` | Delete the `build/` and `dist/` directories |
+| `ant javadoc` | Generate API documentation into `dist/javadoc/` |
+| `ant debug` | Launch under a debugger connection (`nbproject/build-impl.xml`) |
+
+### Build Configuration
+
+| Setting | Value | Declared in |
+|---------|-------|-------------|
+| Project name | `teste_cripto` | `build.xml`, `nbproject/project.xml` |
+| `main.class` | `CifraHibridaGUI` | `nbproject/project.properties` |
+| `javac.source` / `javac.target` | `17` / `17` | `nbproject/project.properties` |
+| `source.encoding` | `UTF-8` | `nbproject/project.properties` |
+| `src.dir` | `src` | `nbproject/project.properties` |
+| `test.src.dir` | `test` (declared, folder absent) | `nbproject/project.properties` |
+| `dist.jar` | `dist/teste_cripto.jar` | `nbproject/project.properties` |
+| `manifest.file` | `manifest.mf` | `nbproject/project.properties` |
+| `javac.classpath` | *(empty)* — zero external dependencies | `nbproject/project.properties` |
 
 ---
 
-## 👨‍💻 Author
+</details>
 
-<div align="center">
+## 🧪 Automated Tests
 
-**Victor Henrique de Jesus Santiago**
-Full Stack Developer
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
 
-[![Email](https://img.shields.io/badge/Email-victorhenriquedejesussantiago%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:victorhenriquedejesussantiago@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victor-henrique-de-jesus-santiago/)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VictorHJesusSantiago)
+> [!IMPORTANT]
+> **No automated tests currently exist in this project.** `nbproject/project.properties` declares `test.src.dir=test` and Ant's generated `build-impl.xml` exposes an `ant test` target, but the `teste_cripto/test/` directory was never created. Running `ant test` today performs no test execution because there is nothing to compile or run. This is stated plainly per the project's documentation standard, along with a proposed suite below.
 
-</div>
+### Test Architecture (Proposed)
+
+```mermaid
+flowchart TB
+    subgraph UNIT["🖥️ Proposed Unit Tests — teste_cripto/test"]
+        U1["CifraHibridaTest.java\n─────────────\nJUnit 5 (or 4)\nNo Swing dependency needed\nTests CifraHibrida directly"]
+    end
+    subgraph CASES["🧪 Candidate Test Cases"]
+        C1["Round-trip: cifrar then decifrar\nrecovers original plaintext"]
+        C2["Two calls to cifrar() on the same\nplaintext produce different IV and ciphertext"]
+        C3["Tampering one byte of textoCifrado\ncauses decifrar() to throw"]
+        C4["hexParaBytes(bytesParaHex(x)) == x\nround-trip identity"]
+        C5["decifrar() with a DIFFERENT CifraHibrida\ninstance's key pair fails"]
+    end
+    subgraph RUNNER["⚙️ Execution"]
+        R1["JUnit (via Ant test target\nonce dependency is added)"]
+    end
+
+    U1 --> C1 & C2 & C3 & C4 & C5
+    U1 --> R1
+
+    style UNIT fill:#1e3a5f,color:#fff
+    style CASES fill:#1a3a1a,color:#fff
+    style RUNNER fill:#3a2a1a,color:#fff
+```
+
+| Source set | Location | Status |
+|------------|----------|--------|
+| Unit tests | `teste_cripto/test/CifraHibridaTest.java` | ⬜ Not present — proposed |
+| Ant target | `ant test` (generated by `build-impl.xml`) | ⚠️ Wired, but has nothing to run |
+
+### Running the Tests
+
+```bash
+# Once a test/ directory and a JUnit dependency are added to
+# nbproject/project.properties (javac.test.classpath):
+cd teste_cripto
+ant test
+
+# HTML report location (once populated):
+# build/test/results/
+```
+
+### Manual Acceptance Checklist
+
+| # | Scenario | Expected result |
+|---|----------|-----------------|
+| 1 | Launch the application | Window opens on the "Cifrar" tab, no dialog appears |
+| 2 | Click "Cifrar Texto" with an empty plaintext box | Dialog: "Digite um texto para cifrar." |
+| 3 | Type "Hello World" and click "Cifrar Texto" | Three hex fields populate, non-empty |
+| 4 | Encrypt the same plaintext twice | The two resulting IV and ciphertext hex strings differ |
+| 5 | Switch to "Decifrar", paste all three hex values, click "Decifrar Texto" | "Texto Decifrado" shows "Hello World" exactly |
+| 6 | Click "Decifrar Texto" with any field empty | Dialog: "Preencha todos os campos com os dados cifrados." |
+| 7 | Alter one hex character of the ciphertext before decrypting | Dialog: "Erro ao decifrar: ..." (GCM tag mismatch) |
+| 8 | Paste an odd-length or non-hex string into any decrypt field | Dialog: "Erro ao decifrar: ..." (hex parse failure) |
+| 9 | Close and relaunch the application, then paste values from before the restart | Decryption fails — the RSA key pair was regenerated |
+| 10 | Encrypt a very long paragraph (multi-KB) | Ciphertext hex renders and wraps correctly in the scrollable text area |
+
+---
+
+</details>
+
+## 📊 Metrics & Monitoring
+
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
+
+### Codebase Metrics
+
+| Metric | Value |
+|--------|-------|
+| Java source files | 2 (`CifraHibrida.java`, `CifraHibridaGUI.java`) |
+| Lines of Java (`CifraHibrida.java`) | 113 |
+| Lines of Java (`CifraHibridaGUI.java`) | 249 |
+| Public classes | 2 (plus 1 nested static class, `DadosCifrados`) |
+| External runtime dependencies | 0 (`javac.classpath` is empty) |
+| RSA key size | 2048 bits |
+| AES key size | 128 bits |
+| GCM IV size | 12 bytes (96 bits) |
+| GCM authentication tag size | 128 bits |
+| Automated test files | 0 |
+
+### Runtime Signals
+
+| Signal | Source | Where to observe |
+|--------|--------|------------------|
+| Key-pair generation failure | `catch (Exception e)` in `CifraHibridaGUI` constructor | Console stack trace + `JOptionPane` dialog, then `System.exit(1)` |
+| Encryption failure | `catch (Exception ex)` in `acaoCifrar()` | `JOptionPane` dialog: "Erro ao cifrar: ..." |
+| Decryption failure (including GCM tag mismatch) | `catch (Exception ex)` in `acaoDecifrar()` | `JOptionPane` dialog: "Erro ao decifrar: ..." |
+| Nimbus Look and Feel unavailable | `catch (Exception ex)` around `UIManager.setLookAndFeel` | Console stack trace only; UI falls back to the default L&F silently |
+
+### Useful Diagnostic Commands
+
+```bash
+# Confirm the JDK version matches the project's javac.source/target
+java -version
+
+# Inspect the built JAR's manifest for the injected Main-Class
+unzip -p teste_cripto/dist/teste_cripto.jar META-INF/MANIFEST.MF
+
+# List installed Look and Feels available on this JVM (helps confirm Nimbus presence)
+java -XshowSettings:properties -version 2>&1 | grep -i laf
+
+# Run with verbose class loading to confirm no external JARs are pulled in
+java -verbose:class -jar teste_cripto/dist/teste_cripto.jar
+```
+
+### Standardized Failure Modes
+
+| Condition | Java Exception | User-Visible Message |
+|-----------|-----------------|------------------------|
+| RSA key-pair generation fails at startup | `NoSuchAlgorithmException` (unexpected on a standard JDK) | "Erro ao iniciar o sistema de criptografia: ..." + process exits |
+| Empty plaintext on encrypt | *(handled before any exception)* | "Digite um texto para cifrar." |
+| Empty field on decrypt | *(handled before any exception)* | "Preencha todos os campos com os dados cifrados." |
+| Malformed hex input | `StringIndexOutOfBoundsException` or similar | "Erro ao decifrar: ..." |
+| Tampered ciphertext or wrong key | `AEADBadTagException` | "Erro ao decifrar: ..." |
+| RSA unwrap fails (wrong key pair) | `BadPaddingException` | "Erro ao decifrar: ..." |
+
+---
+
+</details>
+
+## ⚠️ Known Limitations
+
+<details>
+<summary>▶️ <strong>Click to expand / collapse this section</strong></summary>
+
+> [!IMPORTANT]
+> This application was built as an educational demonstration of hybrid RSA/AES cryptography and Java Swing desktop UI construction. It is not hardened for production or multi-user use.
+
+| Category | Issue | Status |
+|----------|-------|--------|
+| 🔑 **No key persistence** | The RSA key pair exists only in process memory and is lost on exit | ⚠️ Open — add PKCS#8/X.509 file export-import |
+| 🔄 **No cross-session decryption** | Ciphertext from one launch cannot be decrypted in a later launch by design | ➕ Intentional (current scope), but see mitigation in Security |
+| 🧪 **No automated tests** | `test/` source directory declared but never created | ⚠️ Open — see [Automated Tests](#-automated-tests) for a proposed suite |
+| 🧾 **No hex-input validation** | Malformed hex reaches `hexParaBytes` unchecked, producing a generic error | ⚠️ Open — add regex pre-validation with a specific message |
+| 🌍 **Hardcoded Portuguese UI strings** | All labels and dialogs are Portuguese literals inside `CifraHibridaGUI.java` | ⚠️ Open — externalize to a `ResourceBundle` for i18n |
+| 🧵 **No explicit key material zeroing** | Byte arrays holding AES/RSA key bytes are left to GC | ⚠️ Open — `Arrays.fill(..., (byte) 0)` where the JCE API allows |
+| 🔍 **No public-key fingerprint display** | User cannot verify which key pair a ciphertext belongs to | ⚠️ Open — show SHA-256 fingerprint in the UI |
+| 📋 **Clipboard exposure** | Hex fields are copy-pasteable, so secrets can land in clipboard history | ➕ Intentional (needed for the demo workflow), document as a caveat |
+| 🖥️ **Single-window, single-user design** | No multi-document, multi-user, or session-switching support | ➕ Intentional — matches the project's teaching scope |
+| 🔧 **No Ant dependency for a test framework** | `javac.classpath` is empty, so JUnit is not yet wired for `ant test` | ⚠️ Open — add JUnit JAR reference to enable the proposed test suite |
+
+> [!TIP]
+> The single highest-value improvement is adding **RSA key-pair persistence** (export the key pair to PKCS#8/X.509 PEM files on demand, and load them at startup if present). This one change removes the most confusing behavior new users encounter — "why can't I decrypt what I just encrypted after restarting?" — and is a natural prerequisite for later adding hex-input validation and a public-key fingerprint display.
+
+</details>
 
 ---
 
 <div align="center">
 
-*Made with 🔒 and Java by **Victor H. J. Santiago***
+---
+
+### 🔐 CifraHibrida
+
+*Fast cipher for the message, strong cipher for the key*
+
+[![Java](https://img.shields.io/badge/Written%20in-Java%2017-ED8B00?style=flat-square&logo=openjdk&logoColor=white)](https://openjdk.org/)
+[![RSA](https://img.shields.io/badge/Key%20Exchange-RSA--2048%20OAEP-8B5CF6?style=flat-square)]()
+[![AES](https://img.shields.io/badge/Message%20Cipher-AES--128--GCM-10B981?style=flat-square)]()
+[![Offline](https://img.shields.io/badge/Network-Zero%20Sockets-6DB33F?style=flat-square)]()
+[![Swing](https://img.shields.io/badge/UI-Java%20Swing-437291?style=flat-square&logo=java&logoColor=white)](https://docs.oracle.com/javase/tutorial/uiswing/)
+
+<br/>
+
+```
+"The envelope protects the letter,
+ and a stronger lock protects the envelope."
+```
 
 </div>
